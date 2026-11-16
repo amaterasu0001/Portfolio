@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="88%" cy="0%" r="70%">
+      <stop offset="0" stop-color="#ff6a3d" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#ff6a3d" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#ffffff" fill-opacity="0.07"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#07080b"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- monogram -->
+  <rect x="80" y="76" width="64" height="64" rx="18" fill="#10131a" stroke="#ffffff" stroke-opacity="0.16"/>
+  <path d="M97 122V98.4l15 16.4 15-16.4V122" fill="none" stroke="#efeee9" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="112" cy="94" r="4.4" fill="#ff6a3d"/>
+  <text x="164" y="118" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="#efeee9">Mahir Faisal</text>
+
+  <text x="80" y="300" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="96" font-weight="700" letter-spacing="-3" fill="#efeee9">Hi, I’m Mahir.</text>
+  <text x="80" y="408" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="96" font-weight="700" letter-spacing="-3" fill="#a6a8b3">I <tspan font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="400" fill="#ff9b7b">build things</tspan>.</text>
+
+  <text x="80" y="492" font-family="Consolas, 'Courier New', monospace" font-size="24" letter-spacing="3" fill="#a6a8b3">DEVELOPER  ·  CSE STUDENT  ·  BUILDER</text>
+
+  <line x1="80" y1="536" x2="1120" y2="536" stroke="#ffffff" stroke-opacity="0.1"/>
+  <text x="80" y="580" font-family="Consolas, 'Courier New', monospace" font-size="22" fill="#80838f">github.com/amaterasu0001</text>
+  <text x="1120" y="580" text-anchor="end" font-family="Consolas, 'Courier New', monospace" font-size="22" fill="#80838f">Dhaka, Bangladesh</text>
+</svg>
