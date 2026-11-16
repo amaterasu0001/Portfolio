@@ -134,8 +134,13 @@
 
 @utility glass {
   background: rgb(11 13 18 / 0.72);
-  backdrop-filter: blur(16px) saturate(140%);
+  /*
+    Prefixed first, standard last. Written the other way round, the production CSS
+    minifier kept only the -webkit- declaration, so Chrome, Android and Firefox got
+    no blur at all and the open mobile menu was see-through.
+  */
   -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
 }
 
 /* Small mono caps label */

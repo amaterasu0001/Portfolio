@@ -85,7 +85,7 @@ export function Terminal({ steps, title = 'zsh', className }: TerminalProps) {
       </div>
 
       {/* Body: visually animated, but screen readers get the full static transcript. */}
-      <div className="min-h-[21.5rem] p-4 font-mono text-[0.8125rem] leading-relaxed sm:p-5">
+      <div className="grid min-h-[21.5rem] p-4 font-mono text-[0.8125rem] leading-relaxed sm:p-5">
         <div className="sr-only">
           {steps.map((step) => (
             <div key={step.command}>
@@ -95,7 +95,26 @@ export function Terminal({ steps, title = 'zsh', className }: TerminalProps) {
           ))}
         </div>
 
-        <div aria-hidden>
+        {/*
+          Invisible copy of the finished transcript, stacked in the same grid cell as the
+          animated one. It reserves the final height from the first paint, so the page
+          below never shifts while the terminal types (a shift mid-scroll makes in-page
+          links land short of their section).
+        */}
+        <div className="invisible col-start-1 row-start-1" aria-hidden>
+          {steps.map((step) => (
+            <div key={step.command} className="mb-4">
+              <p className="flex gap-2">
+                <span>❯</span>
+                <span>{step.command}</span>
+              </p>
+              <div className="mt-1.5 pl-4">{step.output}</div>
+            </div>
+          ))}
+          <p>❯</p>
+        </div>
+
+        <div className="col-start-1 row-start-1" aria-hidden>
           {steps.map((step, index) => {
             const isPast = done || index < stepIndex
             const isCurrent = !done && index === stepIndex

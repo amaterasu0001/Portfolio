@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'motion/react'
+import { motion } from 'motion/react'
 import { Menu, X } from 'lucide-react'
 import { navLinks, profile } from '@/data/profile'
 import { useActiveSection } from '@/hooks/useActiveSection'
@@ -14,6 +14,7 @@ export function Navbar() {
   const scrolled = useScrolled()
   const active = useActiveSection(sectionIds)
   const [open, setOpen] = useState(false)
+  const close = () => setOpen(false)
 
   // Close the mobile menu on Escape, and when the viewport grows past the breakpoint.
   useEffect(() => {
@@ -51,7 +52,12 @@ export function Navbar() {
             scrolled ? 'h-14' : 'h-[4.5rem]',
           )}
         >
-          <a href="#home" className="group flex items-center gap-3" aria-label={`${profile.fullName} — home`}>
+          <a
+            href="#home"
+            onClick={close}
+            className="group flex items-center gap-3"
+            aria-label={`${profile.fullName} — home`}
+          >
             <Monogram className="transition-transform duration-300 group-hover:-rotate-6" />
             <span className="text-[0.9375rem] font-medium tracking-tight text-fg">
               {profile.fullName}
@@ -110,49 +116,58 @@ export function Navbar() {
           </div>
         </nav>
 
-        {/* Mobile menu */}
-        <AnimatePresence initial={false}>
-          {open && (
-            <motion.div
-              id="mobile-menu"
-              className="overflow-hidden lg:hidden"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <ul className="container-page grid gap-1 pb-5 pt-1">
-                {navLinks.map((link, index) => (
-                  <li key={link.id}>
-                    <a
-                      href={`#${link.id}`}
-                      onClick={() => setOpen(false)}
-                      aria-current={active === link.id ? 'true' : undefined}
-                      className={cn(
-                        'flex items-center justify-between rounded-xl px-3 py-3 text-base transition-colors',
-                        active === link.id ? 'bg-white/[0.06] text-fg' : 'text-muted hover:text-fg',
-                      )}
-                    >
-                      {link.label}
-                      <span className="font-mono text-xs text-faint">0{index + 1}</span>
-                    </a>
-                  </li>
-                ))}
-                <li className="mt-2 sm:hidden">
+        {/*
+          Mobile menu.
+
+          The open/close animation is plain CSS (grid rows 0fr ↔ 1fr), on purpose.
+          Animating `height: auto` with Motion makes the library measure the element and
+          then call `window.scrollTo()` to restore the scroll position. That cancelled the
+          smooth scroll started by the very tap that closes this menu: the links updated
+          the URL hash but the page never moved.
+
+          `invisible` keeps the closed menu out of the tab order and the accessibility tree.
+        */}
+        <div
+          id="mobile-menu"
+          className={cn(
+            'grid transition-[grid-template-rows,opacity,visibility] duration-300 ease-out-expo lg:hidden',
+            open ? 'visible grid-rows-[1fr] opacity-100' : 'invisible grid-rows-[0fr] opacity-0',
+          )}
+        >
+          <div className="overflow-hidden">
+            <ul className="container-page grid gap-1 pb-5 pt-1">
+              {navLinks.map((link, index) => (
+                <li key={link.id}>
+                  {/* A real anchor: the browser does the hash update and the smooth scroll. */}
                   <a
-                    href={profile.githubUrl}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="flex items-center gap-2 rounded-xl border border-line px-3 py-3 text-sm text-fg"
+                    href={`#${link.id}`}
+                    onClick={close}
+                    aria-current={active === link.id ? 'true' : undefined}
+                    className={cn(
+                      'flex items-center justify-between rounded-xl px-3 py-3 text-base transition-colors',
+                      active === link.id ? 'bg-white/[0.06] text-fg' : 'text-muted hover:text-fg',
+                    )}
                   >
-                    <GitHubIcon className="size-4" />
-                    <span className="font-mono">{profile.username}</span>
+                    {link.label}
+                    <span className="font-mono text-xs text-faint">0{index + 1}</span>
                   </a>
                 </li>
-              </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              ))}
+              <li className="mt-2 sm:hidden">
+                <a
+                  href={profile.githubUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  onClick={close}
+                  className="flex items-center gap-2 rounded-xl border border-line px-3 py-3 text-sm text-fg"
+                >
+                  <GitHubIcon className="size-4" />
+                  <span className="font-mono">{profile.username}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </header>
   )
