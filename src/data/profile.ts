@@ -11,6 +11,8 @@ export const profile = {
   fullName: 'Mahir Faisal',
   username: 'amaterasu0001',
   roles: ['Developer', 'CSE Student', 'Builder'],
+  /** Hero title. "Full-stack" is backed by LearnSphere (MERN) and A.V.I.A. (React + Fastify + Postgres). */
+  title: 'Full-stack developer & CSE student',
   location: 'Dhaka, Bangladesh',
   githubUrl: 'https://github.com/amaterasu0001',
 
@@ -26,8 +28,11 @@ export const profile = {
 
   headline:
     'I build full-stack web apps, bots and games — and I learn each stack by shipping something with it.',
+  /** Hero bio — every project named here is a public repository. */
   intro:
-    'CSE student in Dhaka. My repositories run from a 2D action game in C/C++ to a MERN tutoring platform with real-time chat, a Telegram reminder bot, and A.V.I.A. — a crew-health monitoring system built for NASA Space Apps 2026.',
+    'I learn a stack by shipping something with it — from a 2D action game in C/C++ to a MERN tutoring platform with real-time chat, a Telegram reminder bot, and A.V.I.A., a crew-health monitoring system built for NASA Space Apps 2026.',
+  /** Hero "working with" line. Each entry is used in at least one repository (see skills.ts). */
+  stack: ['TypeScript', 'React', 'Node.js', 'Python', 'PostgreSQL'],
 
   /** TODO: add a public contact email, e.g. 'you@example.com'. The Email button appears automatically. */
   email: null as string | null,

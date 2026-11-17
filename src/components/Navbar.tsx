@@ -48,7 +48,7 @@ export function Navbar() {
         <nav
           aria-label="Primary"
           className={cn(
-            'container-page flex items-center justify-between transition-[height] duration-300',
+            'container-page relative flex items-center justify-between transition-[height] duration-300',
             scrolled ? 'h-14' : 'h-[4.5rem]',
           )}
         >
@@ -64,8 +64,8 @@ export function Navbar() {
             </span>
           </a>
 
-          {/* Desktop links */}
-          <ul className="hidden items-center gap-1 lg:flex">
+          {/* Desktop links — centred on the bar, independent of the widths on either side */}
+          <ul className="hidden items-center gap-1 lg:absolute lg:left-1/2 lg:flex lg:-translate-x-1/2">
             {navLinks.map((link) => {
               const isActive = active === link.id
               return (

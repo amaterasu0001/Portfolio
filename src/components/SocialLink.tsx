@@ -21,7 +21,7 @@ export function SocialLink({ link, variant = 'icon', className }: SocialLinkProp
         aria-label={`${link.label} — ${link.handle}`}
         title={link.label}
         className={cn(
-          'inline-flex size-10 items-center justify-center rounded-full border border-line text-muted transition-colors duration-200 hover:border-white/25 hover:bg-white/[0.06] hover:text-fg',
+          'inline-flex size-10 items-center justify-center rounded-full border border-line text-muted transition-[border-color,background-color,color,transform] duration-200 hover:-translate-y-px hover:border-white/25 hover:bg-white/[0.06] hover:text-fg',
           className,
         )}
         {...linkProps}
