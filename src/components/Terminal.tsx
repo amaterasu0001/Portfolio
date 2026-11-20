@@ -72,7 +72,7 @@ export function Terminal({ steps, title = 'zsh', className }: TerminalProps) {
     <div
       ref={ref}
       className={cn(
-        'surface relative overflow-hidden shadow-[0_32px_80px_-32px_rgb(0_0_0/0.9)]',
+        'surface relative overflow-hidden shadow-[0_24px_48px_-24px_rgb(0_0_0/0.8)]',
         className,
       )}
     >

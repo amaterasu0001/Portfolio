@@ -41,7 +41,7 @@ export function DataSourceBadge({ className }: { className?: string }) {
           <button
             type="button"
             onClick={refresh}
-            className="inline-flex items-center gap-1 rounded-full border border-line px-2 py-0.5 text-muted transition-colors hover:border-white/25 hover:text-fg"
+            className="inline-flex items-center gap-1 rounded-md border border-line px-2 py-0.5 text-muted transition-colors hover:border-white/25 hover:text-fg"
           >
             <RefreshCw className="size-3" aria-hidden />
             Retry

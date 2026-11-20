@@ -17,8 +17,8 @@ export function Footer() {
         </div>
 
         <nav aria-label="Footer">
-          <p className="eyebrow text-faint">Navigate</p>
-          <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
+          <p className="text-sm font-medium text-fg">Navigate</p>
+          <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
             {navLinks.map((link) => (
               <li key={link.id}>
                 <a href={`#${link.id}`} className="text-muted transition-colors hover:text-fg">
@@ -30,7 +30,7 @@ export function Footer() {
         </nav>
 
         <div>
-          <p className="eyebrow text-faint">Elsewhere</p>
+          <p className="text-sm font-medium text-fg">Elsewhere</p>
           <ul className="mt-4 flex gap-2">
             {socials.map((link) => (
               <li key={link.label}>

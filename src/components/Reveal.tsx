@@ -15,7 +15,7 @@ interface RevealProps {
  * Fades content up the first time it scrolls into view.
  * <MotionConfig reducedMotion="user"> in App disables the movement for users who ask for that.
  */
-export function Reveal({ children, className, delay = 0, y = 18, as = 'div' }: RevealProps) {
+export function Reveal({ children, className, delay = 0, y = 12, as = 'div' }: RevealProps) {
   const Component = motion[as]
   return (
     <Component
@@ -23,7 +23,7 @@ export function Reveal({ children, className, delay = 0, y = 18, as = 'div' }: R
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '0px 0px -72px 0px' }}
-      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </Component>

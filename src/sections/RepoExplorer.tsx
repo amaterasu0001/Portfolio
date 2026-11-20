@@ -79,13 +79,8 @@ export function RepoExplorer({ onOpenProject }: { onOpenProject: (repo: string) 
       <div className="container-page">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            index="04"
             eyebrow="All repositories"
-            title={
-              <>
-                Everything public, <span className="accent-serif text-ember-300">nothing hidden</span>.
-              </>
-            }
+            title="Everything public, nothing hidden"
             description="The small ones too — first pages, coursework, re-uploads. Loaded from the GitHub API, so new repositories appear here on their own."
           />
           <Reveal className="shrink-0">
@@ -94,7 +89,7 @@ export function RepoExplorer({ onOpenProject }: { onOpenProject: (repo: string) 
         </div>
 
         {/* Toolbar */}
-        <Reveal delay={0.05} className="surface mt-10 p-4 sm:p-5">
+        <Reveal delay={0.05} className="surface mt-10 p-4 sm:p-6">
           <div className="flex flex-col gap-3 sm:flex-row">
             <div className="relative flex-1">
               <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-faint" aria-hidden />
@@ -102,9 +97,9 @@ export function RepoExplorer({ onOpenProject }: { onOpenProject: (repo: string) 
                 type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search by name, technology or description…"
+                placeholder="Search repositories"
                 aria-label="Search repositories"
-                className="h-11 w-full rounded-xl border border-line bg-ink-950 pl-10 pr-3 text-sm text-fg placeholder:text-faint transition-colors focus:border-ember/60 focus:outline-none [&::-webkit-search-cancel-button]:hidden"
+                className="h-10 w-full rounded-control border border-line bg-ink-950 pl-10 pr-3 text-sm text-fg placeholder:text-faint transition-colors focus:border-ember/60 focus:outline-none [&::-webkit-search-cancel-button]:hidden"
               />
             </div>
             <label className="relative flex items-center">
@@ -113,7 +108,7 @@ export function RepoExplorer({ onOpenProject }: { onOpenProject: (repo: string) 
               <select
                 value={sort}
                 onChange={(event) => setSort(event.target.value as SortKey)}
-                className="h-11 w-full appearance-none rounded-xl border border-line bg-ink-950 pl-10 pr-9 text-sm text-fg transition-colors focus:border-ember/60 focus:outline-none sm:w-auto"
+                className="h-10 w-full appearance-none rounded-control border border-line bg-ink-950 pl-10 pr-9 text-sm text-fg transition-colors focus:border-ember/60 focus:outline-none sm:w-auto"
               >
                 {sortOptions.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -165,13 +160,13 @@ export function RepoExplorer({ onOpenProject }: { onOpenProject: (repo: string) 
             </AnimatePresence>
           </ul>
         ) : (
-          <div className="mt-4 rounded-[1.125rem] border border-dashed border-line-strong px-6 py-16 text-center">
-            <p className="text-base font-medium text-fg">No repositories match those filters.</p>
-            <p className="mt-1.5 text-sm text-muted">Try a different search term or clear the filters.</p>
+          <div className="mt-4 rounded-2xl border border-dashed border-line-strong px-6 py-16 text-center">
+            <p className="text-base font-medium text-fg">No repositories match those filters</p>
+            <p className="mt-2 text-sm text-muted">Try a different search term or clear the filters</p>
             <button
               type="button"
               onClick={reset}
-              className="mt-5 inline-flex h-9 items-center rounded-full border border-line-strong px-4 text-sm text-fg transition-colors hover:bg-white/[0.06]"
+              className="mt-6 inline-flex h-9 items-center rounded-control border border-line-strong px-4 text-sm text-fg transition-colors hover:bg-white/[0.06]"
             >
               Clear filters
             </button>
@@ -192,7 +187,7 @@ interface FilterRowProps {
 function FilterRow({ label, options, value, onChange }: FilterRowProps) {
   return (
     <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-      <p className="w-24 shrink-0 font-mono text-[0.68rem] uppercase tracking-widest text-faint">{label}</p>
+      <p className="w-24 shrink-0 font-mono text-xs text-faint">{label}</p>
       <div className="flex flex-wrap gap-1.5" role="group" aria-label={`Filter by ${label.toLowerCase()}`}>
         {options.map((option) => {
           const active = option === value
@@ -203,7 +198,7 @@ function FilterRow({ label, options, value, onChange }: FilterRowProps) {
               aria-pressed={active}
               onClick={() => onChange(option)}
               className={cn(
-                'rounded-full border px-3 py-1.5 text-[0.8125rem] transition-colors duration-200',
+                'inline-flex h-8 items-center rounded-lg border px-3 text-[0.8125rem] transition-colors duration-150',
                 active
                   ? 'border-fg bg-fg font-medium text-ink-950'
                   : 'border-line text-muted hover:border-white/25 hover:text-fg',

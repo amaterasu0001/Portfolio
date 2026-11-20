@@ -12,7 +12,7 @@ function Key({ label, action, wide }: { label: string; action: string; wide?: bo
       >
         {label}
       </kbd>
-      <span className="font-mono text-[0.62rem] uppercase tracking-wider text-faint">{action}</span>
+      <span className="font-mono text-[0.6875rem] text-faint">{action}</span>
     </div>
   )
 }
@@ -25,14 +25,14 @@ export function GameControls() {
         {/* HUD */}
         <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 rounded-xl border border-line bg-ink-850 px-4 py-3">
           <div>
-            <p className="font-mono text-[0.62rem] uppercase tracking-widest text-faint">Life</p>
+            <p className="font-mono text-[0.6875rem] text-faint">Life</p>
             <div className="mt-1.5 flex gap-1" role="img" aria-label="Life bar, five of six segments">
               {Array.from({ length: 6 }, (_, i) => (
                 <span key={i} className={cn('h-2 w-5 rounded-sm', i < 5 ? 'bg-ember' : 'bg-white/10')} />
               ))}
             </div>
           </div>
-          <ol className="order-last flex w-full items-center justify-center gap-1.5 font-mono text-[0.7rem] sm:order-none sm:w-auto" aria-label="Level progression">
+          <ol className="order-last flex w-full items-center justify-center gap-1.5 font-mono text-xs sm:order-none sm:w-auto" aria-label="Level progression">
             {[1, 2, 3].map((level) => (
               <li key={level} className="flex items-center gap-1.5">
                 <span
@@ -48,7 +48,7 @@ export function GameControls() {
             ))}
           </ol>
           <div className="text-right">
-            <p className="font-mono text-[0.62rem] uppercase tracking-widest text-faint">Score</p>
+            <p className="font-mono text-[0.6875rem] text-faint">Score</p>
             <p className="font-mono text-sm text-fg">024</p>
           </div>
         </div>

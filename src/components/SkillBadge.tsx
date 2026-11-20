@@ -17,7 +17,7 @@ export function SkillBadge({ skill, selected, related, onSelect }: SkillBadgePro
       aria-pressed={selected}
       onClick={() => onSelect(skill)}
       className={cn(
-        'inline-flex items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm transition-[border-color,background-color,color,opacity] duration-200',
+        'inline-flex h-8 items-center gap-2 rounded-lg border px-3 text-sm transition-[border-color,background-color,color,opacity] duration-150',
         selected
           ? 'border-ember/70 bg-ember/10 text-fg'
           : 'border-line bg-white/[0.03] text-muted hover:border-white/25 hover:text-fg',
@@ -26,7 +26,7 @@ export function SkillBadge({ skill, selected, related, onSelect }: SkillBadgePro
     >
       {skill.name}
       <span
-        className={cn('font-mono text-[0.68rem]', selected ? 'text-ember-300' : 'text-faint')}
+        className={cn('font-mono text-xs tabular-nums', selected ? 'text-ember-300' : 'text-faint')}
         aria-label={`used in ${skill.usedIn.length} ${skill.usedIn.length === 1 ? 'repository' : 'repositories'}`}
       >
         {skill.usedIn.length}

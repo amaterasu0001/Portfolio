@@ -85,7 +85,7 @@ function Dialog({ view, onClose }: { view: RepoView; onClose: () => void }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative flex max-h-[92dvh] w-full max-w-4xl flex-col overflow-hidden rounded-t-3xl border border-line-strong bg-ink-900 shadow-[0_40px_120px_-20px_rgb(0_0_0/0.9)] sm:max-h-[88dvh] sm:rounded-3xl"
+        className="relative flex max-h-[92dvh] w-full max-w-4xl flex-col overflow-hidden rounded-t-[1.25rem] border border-line-strong bg-ink-900 shadow-[0_32px_80px_-24px_rgb(0_0_0/0.9)] sm:max-h-[88dvh] sm:rounded-[1.25rem]"
         initial={{ y: 32, opacity: 0, scale: 0.985 }}
         animate={{ y: 0, opacity: 1, scale: 1 }}
         exit={{ y: 20, opacity: 0, scale: 0.99 }}
@@ -94,16 +94,16 @@ function Dialog({ view, onClose }: { view: RepoView; onClose: () => void }) {
         {/* Header */}
         <div className="flex items-center justify-between gap-4 border-b border-line px-5 py-3.5 sm:px-8">
           <p className="eyebrow flex min-w-0 items-center gap-2 text-faint">
-            <span className="text-ember">Case study</span>
+            <span className="text-muted">Case study</span>
             <span aria-hidden>/</span>
-            <span className="truncate normal-case tracking-normal">{view.repo}</span>
+            <span className="truncate">{view.repo}</span>
           </p>
           <button
             ref={closeRef}
             type="button"
             onClick={onClose}
             aria-label="Close project details"
-            className="inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-line text-muted transition-colors hover:border-white/25 hover:text-fg"
+            className="inline-flex size-9 shrink-0 items-center justify-center rounded-control border border-line text-muted transition-colors hover:border-white/25 hover:text-fg"
           >
             <X className="size-4" aria-hidden />
           </button>
@@ -111,23 +111,22 @@ function Dialog({ view, onClose }: { view: RepoView; onClose: () => void }) {
 
         {/* Scrollable body */}
         <div className="overflow-y-auto overscroll-contain px-5 pb-8 pt-6 sm:px-8 sm:pt-8">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full border border-line-strong px-2.5 py-1 font-mono text-[0.68rem] uppercase tracking-wider text-muted">
-              {project.category}
-            </span>
+          <p className="flex flex-wrap items-center gap-x-2 font-mono text-xs text-faint">
+            <span>{project.category}</span>
             {project.context && (
-              <span className="rounded-full border border-ember/40 px-2.5 py-1 font-mono text-[0.68rem] uppercase tracking-wider text-ember-300">
-                {project.context}
-              </span>
+              <>
+                <span aria-hidden>·</span>
+                <span className="text-muted">{project.context}</span>
+              </>
             )}
-          </div>
+          </p>
 
-          <h2 id={titleId} className="mt-4 text-3xl font-semibold tracking-tight text-fg sm:text-4xl">
+          <h2 id={titleId} className="mt-3 text-3xl font-medium tracking-[-0.02em] text-fg sm:text-4xl">
             {project.name}
           </h2>
           <p className="mt-2 max-w-2xl text-lg leading-relaxed text-muted">{project.tagline}</p>
 
-          <div className="mt-5 flex flex-wrap gap-2.5">
+          <div className="mt-6 flex flex-wrap gap-3">
             <Button href={view.url} variant="primary" size="sm">
               <GitHubIcon className="size-4" />
               View repository
@@ -142,7 +141,7 @@ function Dialog({ view, onClose }: { view: RepoView; onClose: () => void }) {
 
           {/* Meta strip */}
           {/* Cells flex to fill each row, so any number of facts tiles cleanly. */}
-          <dl className="mt-7 flex flex-wrap gap-px overflow-hidden rounded-2xl border border-line bg-line">
+          <dl className="mt-8 flex flex-wrap gap-px overflow-hidden rounded-xl border border-line bg-line">
             <Meta label="Language">
               <LanguageDot language={view.language} />
             </Meta>
@@ -164,11 +163,11 @@ function Dialog({ view, onClose }: { view: RepoView; onClose: () => void }) {
               alt={`${project.name} screenshot`}
               loading="lazy"
               decoding="async"
-              className="mt-7 w-full rounded-2xl border border-line"
+              className="mt-8 w-full rounded-xl border border-line"
             />
           ) : (
             project.visual && (
-              <div className="mt-7">
+              <div className="mt-8">
                 <ProjectVisual visual={project.visual} />
               </div>
             )
@@ -192,10 +191,10 @@ function Dialog({ view, onClose }: { view: RepoView; onClose: () => void }) {
 
           {project.features.length > 0 && (
             <Block title="Features" className="mt-8">
-              <ul className="grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
+              <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
                 {project.features.map((feature) => (
                   <li key={feature} className="flex gap-2.5 text-fg/90">
-                    <Check className="mt-1 size-3.5 shrink-0 text-ember" aria-hidden />
+                    <Check className="mt-0.5 size-4 shrink-0 text-faint" aria-hidden />
                     {feature}
                   </li>
                 ))}
@@ -209,7 +208,7 @@ function Dialog({ view, onClose }: { view: RepoView; onClose: () => void }) {
                 {project.technicalDetails.map((detail) => (
                   <div key={detail.title} className="rounded-xl border border-line bg-white/[0.02] p-4">
                     <h4 className="text-sm font-medium text-fg">{detail.title}</h4>
-                    <p className="mt-1.5 text-sm leading-relaxed text-muted">{detail.body}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{detail.body}</p>
                   </div>
                 ))}
               </div>
@@ -220,7 +219,7 @@ function Dialog({ view, onClose }: { view: RepoView; onClose: () => void }) {
             <ul className="flex flex-wrap gap-1.5">
               {project.technologies.map((tech) => (
                 <li key={tech}>
-                  <Tag className="px-2.5 py-1.5 text-xs">{tech}</Tag>
+                  <Tag className="px-2 py-1.5 text-xs">{tech}</Tag>
                 </li>
               ))}
             </ul>
@@ -249,7 +248,7 @@ function Dialog({ view, onClose }: { view: RepoView; onClose: () => void }) {
 function Meta({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="min-w-[8.5rem] flex-1 bg-ink-900 px-4 py-3 sm:min-w-[10.5rem]">
-      <dt className="font-mono text-[0.65rem] uppercase tracking-widest text-faint">{label}</dt>
+      <dt className="font-mono text-xs text-faint">{label}</dt>
       <dd className="mt-1 text-sm text-fg">{children}</dd>
     </div>
   )
@@ -258,7 +257,7 @@ function Meta({ label, children }: { label: string; children: ReactNode }) {
 function Block({ title, children, className }: { title: string; children: ReactNode; className?: string }) {
   return (
     <section className={className}>
-      <h3 className="eyebrow text-faint">{title}</h3>
+      <h3 className="text-sm font-medium text-fg">{title}</h3>
       <div className="mt-3 text-[0.9375rem] leading-relaxed text-muted">{children}</div>
     </section>
   )
@@ -267,9 +266,9 @@ function Block({ title, children, className }: { title: string; children: ReactN
 function Note({ icon, label, children }: { icon: ReactNode; label: string; children: ReactNode }) {
   return (
     <p className="flex gap-3 rounded-xl border border-line bg-white/[0.02] p-4 text-sm leading-relaxed text-muted">
-      <span className="mt-0.5 shrink-0 text-ember-300">{icon}</span>
+      <span className="mt-0.5 shrink-0 text-faint">{icon}</span>
       <span>
-        <span className="font-medium text-fg">{label}. </span>
+        <span className="font-medium text-fg">{label} · </span>
         {children}
       </span>
     </p>

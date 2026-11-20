@@ -55,7 +55,7 @@ export function ContributionHeatmap({ calendar }: { calendar: ContributionCalend
       <div className="flex gap-2.5">
         {/* Weekday labels — hidden on small screens where rows are only a few pixels tall */}
         <div
-          className="hidden shrink-0 grid-rows-7 pt-5 font-mono text-[0.62rem] leading-none text-faint sm:grid"
+          className="hidden shrink-0 grid-rows-7 pt-5 font-mono text-[0.6875rem] leading-none text-faint sm:grid"
           aria-hidden
         >
           {['', 'Mon', '', 'Wed', '', 'Fri', ''].map((label, index) => (
@@ -66,7 +66,7 @@ export function ContributionHeatmap({ calendar }: { calendar: ContributionCalend
         </div>
 
         <div className="min-w-0 flex-1">
-          <div className="relative h-5 font-mono text-[0.62rem] text-faint" aria-hidden>
+          <div className="relative h-5 font-mono text-[0.6875rem] text-faint" aria-hidden>
             {monthLabels
               .filter((month) => month.week < weeks - 2)
               .map((month, index) => (
@@ -107,7 +107,7 @@ export function ContributionHeatmap({ calendar }: { calendar: ContributionCalend
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-end gap-1.5 font-mono text-[0.68rem] text-faint">
+      <div className="mt-4 flex items-center justify-end gap-1.5 font-mono text-xs text-faint">
         <span>Less</span>
         {LEVELS.map((color) => (
           <span key={color} className="size-2.5 rounded-[3px]" style={{ backgroundColor: color }} aria-hidden />

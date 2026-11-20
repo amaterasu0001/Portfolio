@@ -26,7 +26,7 @@ export function LearnSphereFlow() {
       {/* Container query: the two panels sit side by side only when the frame itself is wide enough. */}
       <div className="@container w-full max-w-[30rem]">
         <div className="grid gap-3 @md:grid-cols-[0.85fr_1.15fr]">
-          <div className="min-w-0 rounded-xl border border-line bg-ink-850 p-3.5">
+          <div className="min-w-0 rounded-xl border border-line bg-ink-850 p-4">
             <p className="eyebrow text-faint">Routes</p>
             <ul className="mt-3 space-y-1.5 font-mono text-[0.72rem]">
               {routes.map((route) => (
@@ -42,16 +42,16 @@ export function LearnSphereFlow() {
             </ul>
           </div>
 
-          <div className="min-w-0 rounded-xl border border-line bg-ink-850 p-3.5">
+          <div className="min-w-0 rounded-xl border border-line bg-ink-850 p-4">
             <p className="eyebrow text-faint">One chat message</p>
             <ol className="mt-3 space-y-2">
               {messagePath.map((step, index) => (
                 <li key={step.code} className="flex items-start gap-2.5">
-                  <span className="mt-px inline-flex size-[1.15rem] shrink-0 items-center justify-center rounded-full border border-line-strong font-mono text-[0.6rem] text-muted">
+                  <span className="inline-flex size-5 shrink-0 items-center justify-center rounded-full border border-line-strong font-mono text-[0.6875rem] text-muted">
                     {index + 1}
                   </span>
                   <span className="min-w-0">
-                    <span className="block font-mono text-[0.62rem] uppercase tracking-widest text-ember-300">
+                    <span className="block font-mono text-[0.6875rem] text-faint">
                       {step.actor}
                     </span>
                     <span className="block font-mono text-[0.72rem] leading-snug text-fg [overflow-wrap:anywhere]">

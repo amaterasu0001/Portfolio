@@ -5,7 +5,6 @@ import type { RepoView } from '@/lib/repos'
 import { GitHubIcon } from './BrandIcons'
 import { Button } from './Button'
 import { LanguageDot } from './LanguageDot'
-import { Spotlight } from './Spotlight'
 import { Tag } from './Tag'
 import { ProjectVisual } from './visuals'
 
@@ -27,7 +26,8 @@ export function ProjectCard({ view, index, flip, onOpen }: ProjectCardProps) {
   const extraTags = project.technologies.length - MAX_TAGS
 
   return (
-    <Spotlight as="article" className="p-3 sm:p-4">
+    // Nested radius: 20px card − 8px padding = 12px visual corner.
+    <article className="surface rounded-[1.25rem] p-2">
       <div className="grid gap-6 lg:grid-cols-2 lg:gap-10">
         {/* Visual */}
         <div className={cn('min-w-0', flip && 'lg:order-2')}>
@@ -37,7 +37,7 @@ export function ProjectCard({ view, index, flip, onOpen }: ProjectCardProps) {
               alt={`${project.name} screenshot`}
               loading="lazy"
               decoding="async"
-              className="h-full min-h-[19rem] w-full rounded-[0.875rem] border border-line object-cover"
+              className="h-full min-h-[19rem] w-full rounded-xl border border-line object-cover"
             />
           ) : (
             project.visual && <ProjectVisual visual={project.visual} />
@@ -45,21 +45,22 @@ export function ProjectCard({ view, index, flip, onOpen }: ProjectCardProps) {
         </div>
 
         {/* Content */}
-        <div className="flex min-w-0 flex-col px-2 pb-3 sm:px-3 lg:py-5 lg:pr-6">
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-            <span className="font-mono text-sm text-ember">{String(index + 1).padStart(2, '0')}</span>
+        <div className="flex min-w-0 flex-col px-4 pb-4 sm:px-6 lg:py-6 lg:pl-2 lg:pr-8">
+          <p className="flex flex-wrap items-center gap-x-2 font-mono text-xs text-faint">
+            <span className="tabular-nums">{String(index + 1).padStart(2, '0')}</span>
             {project.context && (
-              <span className="rounded-full border border-line-strong px-2.5 py-1 font-mono text-[0.68rem] uppercase tracking-wider text-muted">
-                {project.context}
-              </span>
+              <>
+                <span aria-hidden>·</span>
+                <span className="text-muted">{project.context}</span>
+              </>
             )}
-          </div>
+          </p>
 
-          <h3 className="mt-4 text-2xl font-semibold tracking-tight text-fg sm:text-[1.75rem]">{project.name}</h3>
+          <h3 className="mt-3 text-2xl font-medium tracking-[-0.02em] text-fg sm:text-[1.75rem]">{project.name}</h3>
           <p className="mt-2 text-base leading-relaxed text-muted">{project.description}</p>
 
           {project.problem && (
-            <p className="mt-4 border-l-2 border-ember/50 pl-3.5 text-sm leading-relaxed text-muted">
+            <p className="mt-4 border-l-2 border-line-strong pl-4 text-sm leading-relaxed text-muted">
               <span className="font-medium text-fg">Why: </span>
               {project.problem}
             </p>
@@ -68,7 +69,7 @@ export function ProjectCard({ view, index, flip, onOpen }: ProjectCardProps) {
           <ul className="mt-5 space-y-2">
             {project.features.slice(0, 3).map((feature) => (
               <li key={feature} className="flex gap-2.5 text-sm leading-relaxed text-fg/90">
-                <Check className="mt-1 size-3.5 shrink-0 text-ember" aria-hidden />
+                <Check className="mt-0.5 size-4 shrink-0 text-faint" aria-hidden />
                 {feature}
               </li>
             ))}
@@ -115,6 +116,6 @@ export function ProjectCard({ view, index, flip, onOpen }: ProjectCardProps) {
           </div>
         </div>
       </div>
-    </Spotlight>
+    </article>
   )
 }

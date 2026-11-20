@@ -6,7 +6,7 @@ type Size = 'md' | 'sm'
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-fg text-ink-950 hover:bg-white shadow-[0_0_0_1px_rgb(255_255_255/0.1),0_8px_24px_-12px_rgb(255_106_61/0.55)]',
+    'bg-fg text-ink-950 hover:bg-white',
   secondary:
     'border border-line-strong bg-white/[0.03] text-fg hover:border-white/30 hover:bg-white/[0.07]',
   ghost: 'text-muted hover:text-fg hover:bg-white/[0.05]',
@@ -18,7 +18,7 @@ const sizes: Record<Size, string> = {
 }
 
 const baseClass =
-  'group/btn inline-flex items-center justify-center gap-2 rounded-full font-medium whitespace-nowrap transition-[background-color,border-color,color,transform] duration-200 hover:-translate-y-px active:translate-y-0 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50'
+  'group/btn inline-flex items-center justify-center gap-2 rounded-control font-medium whitespace-nowrap transition-[background-color,border-color,color,transform] duration-150 ease-out-expo active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50'
 
 interface Common {
   variant?: Variant

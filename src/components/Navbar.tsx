@@ -34,7 +34,7 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-40">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-fg focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-ink-950"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-control focus:bg-fg focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-ink-950"
       >
         Skip to content
       </a>
@@ -48,17 +48,16 @@ export function Navbar() {
         <nav
           aria-label="Primary"
           className={cn(
-            'container-page relative flex items-center justify-between transition-[height] duration-300',
-            scrolled ? 'h-14' : 'h-[4.5rem]',
+            'container-page relative flex h-16 items-center justify-between',
           )}
         >
           <a
             href="#home"
             onClick={close}
-            className="group flex items-center gap-3"
+            className="flex items-center gap-3"
             aria-label={`${profile.fullName} — home`}
           >
-            <Monogram className="transition-transform duration-300 group-hover:-rotate-6" />
+            <Monogram />
             <span className="text-[0.9375rem] font-medium tracking-tight text-fg">
               {profile.fullName}
             </span>
@@ -74,15 +73,15 @@ export function Navbar() {
                     href={`#${link.id}`}
                     aria-current={isActive ? 'true' : undefined}
                     className={cn(
-                      'relative rounded-full px-3.5 py-2 text-sm transition-colors duration-200',
+                      'relative rounded-lg px-3 py-2 text-sm transition-colors duration-150',
                       isActive ? 'text-fg' : 'text-muted hover:text-fg',
                     )}
                   >
                     {isActive && (
                       <motion.span
                         layoutId="nav-pill"
-                        className="absolute inset-0 rounded-full border border-line bg-white/[0.06]"
-                        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                        className="absolute inset-0 rounded-lg border border-line bg-white/[0.06]"
+                        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                         aria-hidden
                       />
                     )}
@@ -98,14 +97,14 @@ export function Navbar() {
               href={profile.githubUrl}
               target="_blank"
               rel="noreferrer noopener"
-              className="hidden h-9 items-center gap-2 rounded-full border border-line-strong px-3.5 text-sm text-fg transition-colors duration-200 hover:border-white/30 hover:bg-white/[0.06] sm:inline-flex"
+              className="hidden h-9 items-center gap-2 rounded-control border border-line-strong px-3 text-sm text-fg transition-colors duration-150 hover:border-white/30 hover:bg-white/[0.06] sm:inline-flex"
             >
               <GitHubIcon className="size-4" />
               <span className="font-mono text-xs">{profile.username}</span>
             </a>
             <button
               type="button"
-              className="inline-flex size-10 items-center justify-center rounded-full border border-line text-fg transition-colors hover:bg-white/[0.06] lg:hidden"
+              className="inline-flex size-10 items-center justify-center rounded-control border border-line text-fg transition-colors hover:bg-white/[0.06] lg:hidden"
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? 'Close menu' : 'Open menu'}

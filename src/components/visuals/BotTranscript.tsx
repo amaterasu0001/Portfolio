@@ -1,3 +1,4 @@
+import { Bot } from 'lucide-react'
 import { cn } from '@/lib/cn'
 import { VisualFrame } from './VisualFrame'
 
@@ -18,22 +19,22 @@ export function BotTranscript() {
     <VisualFrame caption="command flow · strings taken from MemoryMateBot.py">
       <div className="w-full max-w-[22rem] overflow-hidden rounded-2xl border border-line bg-ink-850">
         <div className="flex items-center gap-3 border-b border-line px-4 py-3">
-          <span className="inline-flex size-8 items-center justify-center rounded-full bg-ember/15 text-sm" aria-hidden>
-            🧠
+          <span className="inline-flex size-8 items-center justify-center rounded-full border border-line bg-white/[0.04] text-muted" aria-hidden>
+            <Bot className="size-4" />
           </span>
           <div>
             <p className="text-sm font-medium leading-tight text-fg">MemoryMateBot</p>
-            <p className="font-mono text-[0.65rem] text-faint">bot</p>
+            <p className="font-mono text-[0.6875rem] text-faint">bot</p>
           </div>
         </div>
-        <ul className="space-y-2 p-3.5">
+        <ul className="space-y-2 p-4">
           {messages.map((message, index) => (
             <li key={index} className={cn('flex', message.from === 'user' ? 'justify-end' : 'justify-start')}>
               <span
                 className={cn(
                   'max-w-[85%] whitespace-pre-line rounded-2xl px-3 py-2 text-[0.78rem] leading-snug',
                   message.from === 'user'
-                    ? 'rounded-br-md bg-ember/90 font-mono text-[0.72rem] text-ink-950'
+                    ? 'rounded-br-md bg-fg font-mono text-[0.75rem] text-ink-950'
                     : 'rounded-bl-md border border-line bg-white/[0.04] text-fg',
                 )}
               >

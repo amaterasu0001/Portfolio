@@ -35,13 +35,8 @@ export function Skills({ onOpenProject }: { onOpenProject: (repo: string) => voi
       <div className="container-page">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            index="02"
             eyebrow="Tech stack"
-            title={
-              <>
-                Only what the <span className="accent-serif text-ember-300">repositories</span> can back up.
-              </>
-            }
+            title="Only what the repositories can back up"
             description="Every item below is used in at least one public repo. Select one to see where."
           />
         </div>
@@ -49,12 +44,12 @@ export function Skills({ onOpenProject }: { onOpenProject: (repo: string) => voi
         {/* Evidence panel — the "used in projects" relationship */}
         <Reveal delay={0.05} className="mt-10">
           <div
-            className="surface flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between"
+            className="surface flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:px-6"
             aria-live="polite"
           >
             <p className="text-sm text-muted">
-              <span className="font-mono text-xs uppercase tracking-widest text-faint">Used in</span>
-              <span className="mx-2.5 text-lg font-semibold tracking-tight text-fg">{selected.name}</span>
+              <span className="font-mono text-xs text-faint">Used in</span>
+              <span className="ml-3 text-lg font-medium text-fg">{selected.name}</span>
             </p>
             <ul className="flex flex-wrap gap-2">
               {selected.usedIn.map((repo) => {
@@ -65,7 +60,7 @@ export function Skills({ onOpenProject }: { onOpenProject: (repo: string) => voi
                       type="button"
                       onClick={() => onOpenProject(repo)}
                       aria-haspopup="dialog"
-                      className="rounded-full border border-line-strong px-3 py-1.5 text-sm text-fg transition-colors hover:border-ember/60 hover:bg-ember/10"
+                      className="inline-flex h-8 items-center rounded-lg border border-line-strong px-3 text-sm text-fg transition-colors duration-150 hover:border-white/30 hover:bg-white/[0.06]"
                     >
                       {project?.name ?? repo}
                     </button>
@@ -81,10 +76,10 @@ export function Skills({ onOpenProject }: { onOpenProject: (repo: string) => voi
             const Icon = groupIcons[group]
             const items = skills.filter((skill) => skill.group === group)
             return (
-              <Reveal key={group} delay={0.04 * index} className="surface p-5">
+              <Reveal key={group} delay={0.04 * index} className="surface p-5 sm:p-6">
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex size-9 items-center justify-center rounded-lg border border-line bg-white/[0.04] text-ember-300">
-                    <Icon className="size-[1.1rem]" aria-hidden />
+                  <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg border border-line bg-white/[0.04] text-muted">
+                    <Icon className="size-4" aria-hidden />
                   </span>
                   <div>
                     <h3 className="text-[0.9375rem] font-medium text-fg">{group}</h3>

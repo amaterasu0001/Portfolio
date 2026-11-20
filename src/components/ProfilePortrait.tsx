@@ -15,14 +15,13 @@ export function ProfilePortrait({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'group/portrait relative shrink-0 rounded-[2rem] border border-line-strong bg-ink-900 p-1.5',
-        'shadow-[0_28px_60px_-28px_rgb(0_0_0/0.95),0_0_0_1px_rgb(0_0_0/0.4)]',
-        'transition-[border-color,transform,box-shadow] duration-500 ease-out-expo',
-        'hover:-translate-y-0.5 hover:border-white/25 hover:shadow-[0_32px_70px_-28px_rgb(0_0_0/0.95),0_0_0_1px_rgb(0_0_0/0.4)]',
+        // Nested radius: 24px frame − 4px padding = 20px photo corner.
+        'relative shrink-0 rounded-3xl border border-line-strong bg-ink-900 p-1',
+        'shadow-[0_16px_40px_-24px_rgb(0_0_0/0.9)]',
         className,
       )}
     >
-      <div className="relative size-full overflow-hidden rounded-[1.6rem] bg-ink-800">
+      <div className="relative size-full overflow-hidden rounded-[1.25rem] bg-ink-800">
         <img
           src={portrait}
           alt={`Portrait of ${profile.fullName}`}
@@ -34,8 +33,7 @@ export function ProfilePortrait({ className }: { className?: string }) {
           className={cn(
             'absolute inset-0 size-full select-none object-cover object-[50%_22%]',
             // Zoom in on the face; the origin keeps it centred in the frame.
-            'origin-[34%_12%] scale-[1.65] transition-transform duration-700 ease-out-expo',
-            'group-hover/portrait:scale-[1.71]',
+            'origin-[34%_12%] scale-[1.65]',
           )}
         />
         {/* Hairline inner edge so the photo sits cleanly inside the frame */}

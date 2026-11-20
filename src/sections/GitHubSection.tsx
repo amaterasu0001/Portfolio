@@ -42,13 +42,8 @@ export function GitHubSection() {
       <div className="container-page">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            index="06"
             eyebrow="GitHub"
-            title={
-              <>
-                The work, <span className="accent-serif text-ember-300">as GitHub sees it</span>.
-              </>
-            }
+            title="The work, as GitHub sees it"
             description="Pulled from the public GitHub API when you opened this page. No hand-typed numbers."
           />
           <Reveal>
@@ -101,7 +96,7 @@ export function GitHubSection() {
                 className="size-16 rounded-2xl border border-line-strong bg-ink-800 object-cover"
               />
               <div className="min-w-0">
-                <p className="truncate text-lg font-semibold tracking-tight text-fg">{profile.fullName}</p>
+                <p className="truncate text-lg font-medium text-fg">{profile.fullName}</p>
                 <p className="truncate font-mono text-sm text-muted">@{user.login}</p>
                 <p className="mt-1 inline-flex items-center gap-1.5 text-xs text-faint">
                   <MapPin className="size-3.5" aria-hidden />
@@ -151,12 +146,12 @@ export function GitHubSection() {
                       <span className="block truncate text-sm font-medium text-fg transition-colors group-hover:text-ember-300">
                         {projectByRepo.get(repo.name)?.name ?? repo.name}
                       </span>
-                      <span className="mt-0.5 flex items-center gap-3 font-mono text-[0.7rem] text-faint">
+                      <span className="mt-1 flex items-center gap-3 font-mono text-xs text-faint">
                         <LanguageDot language={projectByRepo.get(repo.name)?.primaryLanguage ?? repo.language} />
                         <time dateTime={repo.pushed_at}>{formatActivity(repo.pushed_at)}</time>
                       </span>
                     </span>
-                    <ArrowUpRight className="size-4 shrink-0 text-faint transition-[color,transform] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ember" aria-hidden />
+                    <ArrowUpRight className="size-4 shrink-0 text-faint transition-colors duration-150 group-hover:text-fg" aria-hidden />
                   </a>
                 </li>
               ))}

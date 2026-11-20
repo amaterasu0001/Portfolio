@@ -30,17 +30,11 @@ export function About() {
       <div className="container-page grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
         <div>
           <SectionHeading
-            index="01"
             eyebrow="About"
-            title={
-              <>
-                From a game in C to a system with a{' '}
-                <span className="accent-serif text-ember-300">database policy</span>.
-              </>
-            }
+            title="From a game in C to a system with a database policy"
           />
 
-          <Reveal delay={0.08} className="mt-8 space-y-5 text-[1.0625rem] leading-relaxed text-muted">
+          <Reveal delay={0.05} className="mt-8 space-y-5 text-[1.0625rem] leading-relaxed text-muted">
             <p>
               I’m a Computer Science &amp; Engineering student at {profile.education.school} in Dhaka. I started
               where most CSE students do — C and C++ — and the first thing I shipped was{' '}
@@ -61,15 +55,15 @@ export function About() {
           </Reveal>
         </div>
 
-        <Reveal delay={0.12} className="lg:pt-14">
+        <Reveal delay={0.1} className="lg:pt-12">
           <div className="surface overflow-hidden">
-            <div className="flex items-center justify-between border-b border-line px-5 py-3.5">
-              <p className="eyebrow text-faint">Fact sheet</p>
+            <div className="flex items-center justify-between border-b border-line px-5 py-4">
+              <p className="text-sm font-medium text-fg">Fact sheet</p>
               <p className="font-mono text-xs text-faint">verified from GitHub</p>
             </div>
             <dl className="divide-y divide-line">
               {facts.map((fact) => (
-                <div key={fact.label} className="grid grid-cols-[8.5rem_1fr] gap-4 px-5 py-3.5 text-sm">
+                <div key={fact.label} className="grid grid-cols-[8.5rem_1fr] gap-4 px-5 py-3 text-sm">
                   <dt className="font-mono text-xs leading-6 text-faint">{fact.label}</dt>
                   <dd className="text-fg">{fact.value}</dd>
                 </div>

@@ -12,13 +12,8 @@ export function FeaturedProjects({ onOpenProject }: { onOpenProject: (repo: stri
     <section id="projects" className="border-t border-line py-24 sm:py-32">
       <div className="container-page">
         <SectionHeading
-          index="03"
           eyebrow="Featured work"
-          title={
-            <>
-              Four projects, four <span className="accent-serif text-ember-300">different</span> problems.
-            </>
-          }
+          title="Four projects, four different problems"
           description="Ranked by technical depth and completeness, not by date. Each one opens into a short case study: what it is, why it exists and how it works."
         />
 
